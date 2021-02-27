@@ -9,7 +9,7 @@ const express = require('express')
 const app = express()
 // now we can access ethods from the express
 
-// creating a endpoint
+// creating a endpoint or get route
 app.get('/users', (req, res) => {
     res.json({
         'success': true,
@@ -18,6 +18,18 @@ app.get('/users', (req, res) => {
     })
 })
 
+// Use variable in routes - any word with ':' added before in url is called variable
+// it can access using req.params.id
+
+app.get('/users/:id', (req, res) => {
+
+    res.json({
+        'success': true,
+        'message': 'got one user',
+        'user': req.params.id
+
+    })
+})
 
 // starting the server
 app.listen(8000, () => {
